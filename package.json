@@ -1,0 +1,84 @@
+{
+  "name": "svelte-electron-forge",
+  "productName": "svelte-electron-forge",
+  "version": "1.0.0",
+  "description": "Svelte + Electron Forge",
+  "main": "src/index.js",
+  "scripts": {
+    "svelte-build": "rollup -c",
+    "svelte-dev": "rollup -c -w",
+    "svelte-start": "sirv public",
+    "boot": "concurrently \"electron .\" \"rollup -cw\"",
+    "dev": "rollup -cw",
+    "build": "rollup -c",
+    "package": "npm run build && electron-builder build",
+    "package-all": "npm run build && electron-builder build -mwl",
+    "package-linux": "npm run build && electron-builder build --linux",
+    "package-win": "npm run build && electron-builder build --win --x64"
+  },
+  "build": {
+    "productName": "electron builder svelte",
+    "appId": "io.github.nateshmbhat.sampleSvelteProject",
+    "files": [
+      "node_modules/",
+      "public/",
+      "public/build",
+      "package.json"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ],
+      "category": "Development"
+    },
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    }
+  },
+  "keywords": [],
+  "author": "jeffd23",
+  "license": "MIT",
+  "dependencies": {
+    "@electron/remote": "^2.0.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "sirv-cli": "^1.0.14"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "concurrently": "^6.3.0",
+    "electron": "^15.3.0",
+    "electron-builder": "^22.13.1",
+    "electron-reload": "^2.0.0-alpha.1",
+    "rollup": "^2.59.0",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-svelte": "^7.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "svelte": "^3.44.1",
+    "svelte-preprocess": "^4.9.8",
+    "typescript": "^4.4.4"
+  }
+}
