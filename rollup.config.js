@@ -5,7 +5,7 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess'
 import css from 'rollup-plugin-css-only'
 
-const production = !process.env.ROLLUP_WATCH;
+const production = process.env.NODE_ENV !== 'development';
 
 export default {
 	input: 'src/svelte.js',

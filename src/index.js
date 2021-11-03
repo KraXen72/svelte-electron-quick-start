@@ -1,18 +1,24 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-const remote = require('@electron/remote/main')
+const remote = require('@electron/remote/main');
+const production = process.env.NODE_ENV !== 'development';
 
-//you can probably disable this in production?
-require('electron-reload')(
-  [__dirname, path.join(__dirname, '../public/global.css', '../public/index.html')], 
-  {
-    electron: path.join(__dirname, '../node_modules', '.bin', 'electron'),
-    awaitWriteFinish: {
-      stabilityThreshold: 200
-    },
-    ignorePermissionErrors: true
-  }
-);
+//auto reload
+
+if (!production) {
+  const dirs = [__dirname, path.join(__dirname, '../public/index.html'), path.join(__dirname, '../public/global.css')]
+  require('electron-reload')(
+    dirs, 
+    {
+      electron: path.join(__dirname, '../node_modules', '.bin', 'electron'),
+      awaitWriteFinish: {
+        stabilityThreshold: 220
+      },
+      ignorePermissionErrors: true
+    }
+  );
+}
+
 
 //enable remote module for preload
 remote.initialize()

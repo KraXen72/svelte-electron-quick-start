@@ -1,5 +1,5 @@
 {
-  "name": "svelte-electron-forge",
+  "name": "svelte-electron-quick-start",
   "productName": "svelte-electron-forge",
   "version": "1.0.0",
   "description": "Svelte + Electron Forge",
@@ -8,9 +8,10 @@
     "svelte-build": "rollup -c",
     "svelte-dev": "rollup -c -w",
     "svelte-start": "sirv public",
-    "boot": "concurrently \"electron .\" \"rollup -cw\"",
+    "boot": "cross-env NODE_ENV=development concurrently \"rollup -cw\"  \"electron .\"",
     "dev": "rollup -cw",
     "build": "rollup -c",
+    "start": "electron .",
     "package": "npm run build && electron-builder build",
     "package-all": "npm run build && electron-builder build -mwl",
     "package-linux": "npm run build && electron-builder build --linux",
@@ -58,12 +59,11 @@
     }
   },
   "keywords": [],
-  "author": "jeffd23",
+  "author": "KraXen72",
   "license": "MIT",
   "dependencies": {
     "@electron/remote": "^2.0.1",
-    "electron-squirrel-startup": "^1.0.0",
-    "sirv-cli": "^1.0.14"
+    "cross-env": "^7.0.3"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
