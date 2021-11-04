@@ -7,7 +7,10 @@ import css from 'rollup-plugin-css-only'
 
 const production = process.env.NODE_ENV !== 'development';
 
-export default {
+/**
+ * @type {import('rollup').RollupOptions}
+ */
+const config = {
 	input: 'src/svelte.js',
 	output: {
 		sourcemap: true,
@@ -56,4 +59,5 @@ export default {
 	]
 };
 
+export default config;
 //for live reload we use electron reload, check index.js
