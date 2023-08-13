@@ -1,3 +1,6 @@
+# OUTDATED & no longer recommended
+This template is outdated and superseeded by many others, such as [electron-vite](https://evite.netlify.app) or setups using [vite-plugin-electron-x](https://github.com/probablykasper/vite-plugin-electron-x).
+
 # svelte electron quick start
 Get up and running with 💪 Svelte & ⚡ Electron.   
 opinionated svelte & electron boilerplate
